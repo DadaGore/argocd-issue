@@ -4,6 +4,16 @@ metadata:
   name: tenants-dev
 spec:
   access:
+    - name: loft-admin-access
+      subresources:
+        - '*'
+      users:
+        - waladtestexamplecom
+      verbs:
+        - get
+        - update
+        - patch
+        - delete
     - name: loft-access
       subresources:
         - members
@@ -27,6 +37,9 @@ spec:
       group: storage.loft.sh
       kind: Team
       name: loft-admins
+  owner:
+    user: waladtestexamplecom
+    team: loft-admins
   quotas: {}
   requirePreset: {}
   requireTemplate:
