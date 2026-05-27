@@ -11,20 +11,8 @@ spec:
     path: projects
   destination:
     server: https://kubernetes.default.svc
-    namespace: ""
-  ignoreDifferences:
-    - group: management.loft.sh
-      kind: Project
-      jsonPointers:
-        - /metadata/resourceVersion
-        - /metadata/generation
-        - /metadata/managedFields
-        - /status
-        - /spec/owner
+    namespace: vcluster-platform
   syncPolicy:
     automated:
       prune: false
       selfHeal: false
-    syncOptions:
-      - RespectIgnoreDifferences=true
-      - Replace=true
