@@ -4,16 +4,6 @@ metadata:
   name: tenants-dev
 spec:
   access:
-    - name: loft-admin-access
-      subresources:
-        - '*'
-      users:
-        - avery-buffington-aeratechnology-com   # normalized form - update after Step 4
-      verbs:
-        - get
-        - update
-        - patch
-        - delete
     - name: loft-access
       subresources:
         - members
@@ -37,9 +27,6 @@ spec:
       group: storage.loft.sh
       kind: Team
       name: loft-admins
-  owner:
-    user: avery-buffington-aeratechnology-com   # normalized form - update after Step 4
-    team: loft-admins
   quotas: {}
   requirePreset: {}
   requireTemplate:
