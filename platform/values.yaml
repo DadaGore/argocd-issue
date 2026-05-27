@@ -1,0 +1,8 @@
+admin:
+  username: admin
+  password: admin
+
+# Minimal config for repro
+config:
+  audit:
+    enabled: false

@@ -1,0 +1,42 @@
+apiVersion: management.loft.sh/v1
+kind: Project
+metadata:
+  name: tenants-dev
+spec:
+  access:
+    - name: loft-admin-access
+      subresources:
+        - '*'
+      users:
+        - waladtestexamplecom   # normalized form - update after Step 4
+      verbs:
+        - get
+        - update
+        - patch
+        - delete
+    - name: loft-access
+      subresources:
+        - members
+        - clusters
+        - templates
+      teams:
+        - loft-admins
+      verbs:
+        - get
+  allowedClusters:
+    - name: '*'
+  allowedRunners:
+    - name: '*'
+  displayName: tenants-dev
+  members:
+    - clusterRole: loft-management-project-admin
+      group: storage.loft.sh
+      kind: Team
+      name: loft-admins
+  owner:
+    user: waladtestexamplecom   # normalized form - update after Step 4
+    team: loft-admins
+  quotas: {}
+  requirePreset: {}
+  requireTemplate:
+    disabled: true

@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vcluster-platform
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://charts.loft.sh
+      chart: vcluster-platform
+      targetRevision: 4.3.4
+      helm:
+        releaseName: vcluster-platform
+        valueFiles:
+          - $values/platform/values.yaml
+    - repoURL: https://github.com/DadaGore/argocd-issue.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vcluster-platform
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
