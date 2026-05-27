@@ -19,6 +19,9 @@ spec:
         - members
         - clusters
         - templates
+        - chartinfo
+        - charts
+        - runners
       teams:
         - loft-admins
       verbs:
