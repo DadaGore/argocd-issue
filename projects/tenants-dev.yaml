@@ -7,6 +7,8 @@ spec:
     - name: loft-admin-access
       subresources:
         - '*'
+      users:
+        - avery-buffington-aeratechnology-com
       verbs:
         - get
         - update
@@ -36,6 +38,7 @@ spec:
       kind: Team
       name: loft-admins
   owner:
+    user: avery-buffington-aeratechnology-com
     team: loft-admins
   quotas: {}
   requirePreset: {}
