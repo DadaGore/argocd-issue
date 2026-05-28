@@ -11,8 +11,15 @@ spec:
     path: projects
   destination:
     server: https://kubernetes.default.svc
-    namespace: vcluster-platform
+    namespace: ""
+  ignoreDifferences:
+    - group: management.loft.sh
+      kind: "*"
+      managedFieldsManagers:
+        - loft
   syncPolicy:
     automated:
       prune: false
       selfHeal: false
+    syncOptions:
+      - RespectIgnoreDifferences=true

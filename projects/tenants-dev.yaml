@@ -3,43 +3,34 @@ kind: Project
 metadata:
   name: tenants-dev
 spec:
-  access:
-    - name: loft-admin-access
-      subresources:
-        - '*'
-      users:
-        - avery-buffington-aeratechnology-com
-      verbs:
-        - get
-        - update
-        - patch
-        - delete
-    - name: loft-access
-      subresources:
-        - members
-        - clusters
-        - templates
-        - nodetypes
-        - chartinfo
-        - charts
-        - runners
-      teams:
-        - loft-admins
-      verbs:
-        - get
+  displayName: tenants-dev
+  owner:
+    user: admin
+    team: loft-admins
   allowedClusters:
     - name: '*'
-  allowedRunners:
-    - name: '*'
-  displayName: tenants-dev
+  allowedTemplates:
+    - kind: VirtualClusterTemplate
+      group: storage.loft.sh
+      name: '*'
   members:
     - clusterRole: loft-management-project-admin
       group: storage.loft.sh
       kind: Team
       name: loft-admins
-  owner:
-    user: avery-buffington-aeratechnology-com
-    team: loft-admins
+  access:
+    - name: loft-admins-access
+      verbs:
+        - get
+        - update
+        - patch
+        - delete
+      subresources:
+        - '*'
+      users:
+        - admin
+      teams:
+        - loft-admins
   quotas: {}
   requirePreset: {}
   requireTemplate:

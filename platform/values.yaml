@@ -1,8 +1,15 @@
 admin:
+  create: true
   username: admin
-  password: admin
+  password: password
 
-# Minimal config for repro
+ingress:
+  enabled: false
+
+audit:
+  enableSideCar: false
+
 config:
+  loftHost: "https://v3vtohw.loft.host"
   audit:
     enabled: false
